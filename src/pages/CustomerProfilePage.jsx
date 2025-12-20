@@ -23,7 +23,7 @@ export const CustomerProfilePage = () => {
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  },[]);
 
   const fetchProfile = async () => {
     try {
