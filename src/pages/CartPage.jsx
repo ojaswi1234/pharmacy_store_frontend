@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Package, Truck, CheckCircle, Clock, Search, Filter, ChevronDown, MoreHorizontal } from 'lucide-react';
 
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/orders`;
 
 export const AdminOrdersPage = () =>  {
   // Sample orders in the system

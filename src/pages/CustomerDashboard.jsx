@@ -18,7 +18,7 @@ const CustomerDashboard = () => {
       const customer = JSON.parse(localStorage.getItem('customer'));
       const email = customer ? customer.email : "guest@example.com"; // Fallback
 
-      const response = await fetch(`http://localhost:5000/api/my-orders?email=${email}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-orders?email=${email}`);
       if (response.ok) {
         const data = await response.json();
         setOrders(data);
@@ -34,7 +34,7 @@ const CustomerDashboard = () => {
     if (!window.confirm("Are you sure you want to cancel this order?")) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}/cancel`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${orderId}/cancel`, {
         method: 'PUT',
       });
 
