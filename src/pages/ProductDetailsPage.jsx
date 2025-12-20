@@ -58,16 +58,13 @@ const ProductDetailsPage = () => {
             <div className="bg-purple-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] overflow-hidden">
               {medicine.image ? (
                 <img 
-                  src={`${import.meta.env.VITE_API_URL}/${medicine.image}`} 
-                  alt={medicine.name}
-                  className="w-full h-full object-contain max-h-[350px]"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
+                  src={`${import.meta.env.VITE_API_URL}/${medicine.image.replace(/\\/g, '/')}`} 
+                  alt={medicine.name} 
+                  className="w-full h-full object-contain max-h-[400px]" 
                 />
-              ) : null}
-              <Package className={`w-32 h-32 text-purple-300 ${medicine.image ? 'hidden' : 'block'}`} />
+              ) : (
+                <Package className="w-32 h-32 text-purple-300" />
+              )}
             </div>
 
             <div className="flex flex-col justify-center">
