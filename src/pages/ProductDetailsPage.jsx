@@ -55,8 +55,19 @@ const ProductDetailsPage = () => {
 
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-            <div className="bg-purple-50 rounded-xl p-8 flex items-center justify-center min-h-[400px]">
-              <Package className="w-32 h-32 text-purple-300" />
+            <div className="bg-purple-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] overflow-hidden">
+              {medicine.image ? (
+                <img 
+                  src={`${import.meta.env.VITE_API_URL}/${medicine.image}`} 
+                  alt={medicine.name}
+                  className="w-full h-full object-contain max-h-[350px]"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'block';
+                  }}
+                />
+              ) : null}
+              <Package className={`w-32 h-32 text-purple-300 ${medicine.image ? 'hidden' : 'block'}`} />
             </div>
 
             <div className="flex flex-col justify-center">
